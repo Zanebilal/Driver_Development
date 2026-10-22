@@ -1,3 +1,17 @@
+/*
+ * -----------------------------------------------------------
+ * This code demonstrate how can a client app from user mode
+ * communicate with a driver from kernel mode using winapi by
+ * sending a text string which can be viewed from the driver
+ * code in the recieveDriver code in :
+ * Driver_Development/driver_communication/recieving_data/recieve_driver.cpp
+
+ * -----------------------------------------------------------
+ */
+
+
+
+
 #include <windows.h>
 #include <stdio.h>
 
