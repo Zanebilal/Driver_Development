@@ -12,12 +12,23 @@
 
 
 #include <ntddk.h>
+#include "driver.h"
 
 #define DRIVER_NAME "Your_driver_name"
+
+PVOID g_myMemory
 
 void UnloadDriver(_In_ PDRIVER_OBJECT DriverObject)
 {
 	UNREFERENCED_PARAMETER(DriverObject);
+
+	ExFreePoolWithTag(
+        g_myMemory,
+        DRIVER_TAG
+    );
+
+	DbgPrintEx(("[+] Freeing memory at 0x%08p\n", g_myMemory));
+
 	DbgPrintEx(0, 0, " [%s] Driver unloaded successfully.\n", DRIVER_NAME);
 
 }
@@ -29,6 +40,14 @@ extern "C" NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_
 	DriverObject->DriverUnload = UnloadDriver;
 
 	DbgPrintEx(0, 0, " [%s] Driver loaded successfully.\n", DRIVER_NAME);
+
+	g_myMemory = ExAllocatePool2(
+        POOL_FLAG_PAGED,
+        1024,
+        DRIVER_TAG
+    );
+
+    KdPrint(("[+] Memory allocated at 0x%08p\n", g_myMemory));
 
 	return STATUS_SUCCESS;
 
