@@ -12,7 +12,7 @@
 
 #include <ntddk.h>
 
-#define DRIVER_NAME "basic-driver"
+#define DRIVER_NAME "Your_driver_name"
 
 void UnloadDriver(_In_ PDRIVER_OBJECT DriverObject)
 {
