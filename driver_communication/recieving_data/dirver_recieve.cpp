@@ -1,3 +1,16 @@
+/*
+ * -----------------------------------------------------------
+ * This code demonstrates how can a driver device from kernel
+ * recieve data that has been sent from a user-mode app
+ * the main code walk through creating the driver device , 
+ * setting up the IRP stack and Handles IOCTL requests from 
+ * user-mode applications
+ * -----------------------------------------------------------
+ */
+
+
+
+
 #include <ntddk.h>
 
 #define DRIVER_NAME "Your_Driver_Name"
