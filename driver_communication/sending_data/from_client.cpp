@@ -15,7 +15,8 @@
 #include <windows.h>
 #include <stdio.h>
 
-#define IOCTL_SEND_DATA CTL_CODE(0x8000, 0x900, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define MY_DRIVER_DEVICE  0x8000
+#define IOCTL_SEND_DATA CTL_CODE(MY_DRIVER_DEVICE, 0x900, METHOD_BUFFERED, FILE_ANY_ACCESS)
 
 int main() {
     
